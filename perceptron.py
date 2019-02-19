@@ -1,6 +1,6 @@
 import random
 class perceptron:
-    bias = 0.2
+    bias = 0.5
     weights = [None] * 5
 
 def funcperc(f):
@@ -60,14 +60,19 @@ def train(learningrate,p = perceptron()):
 
 def test():
     p = createperceptron()
+    train(0.0001, p)
     count =0
     inputs = [None] * 5
     for i in range(0, 20):
 
         for j in range(0, 5):
             inputs[j] = random.randint(1, 20)
-        train(0.01,p)
+            print(inputs[j])
         result = insideperceptron(p,inputs)
+        decition = decidepassornot(inputs)
+        print(decition)
+        print("then what perceptron says")
+        print(result)
         if result == decidepassornot(inputs):
             count = count +1
 
